@@ -1,0 +1,256 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <!-- Background -->
+    <radialGradient id="bgGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#060d14"/>
+      <stop offset="100%" stop-color="#020408"/>
+    </radialGradient>
+
+    <!-- Cyan glow gradient -->
+    <radialGradient id="cyanGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00d4ff" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#00d4ff" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Main hex gradient -->
+    <linearGradient id="hexGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0066ff"/>
+      <stop offset="50%" stop-color="#00d4ff"/>
+      <stop offset="100%" stop-color="#0044cc"/>
+    </linearGradient>
+
+    <!-- Inner hex gradient -->
+    <linearGradient id="innerHexGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#001833"/>
+      <stop offset="100%" stop-color="#000d1a"/>
+    </linearGradient>
+
+    <!-- Checkmark gradient -->
+    <linearGradient id="checkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00ff88"/>
+      <stop offset="100%" stop-color="#00d4ff"/>
+    </linearGradient>
+
+    <!-- Text gradient -->
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="50%" stop-color="#00d4ff"/>
+      <stop offset="100%" stop-color="#0066ff"/>
+    </linearGradient>
+
+    <!-- Glow filter -->
+    <filter id="glowCyan" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Strong glow -->
+    <filter id="glowStrong" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Soft glow for bg orb -->
+    <filter id="glowSoft" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="20"/>
+    </filter>
+
+    <!-- Clip path for hex -->
+    <clipPath id="hexClip">
+      <polygon points="200,75 295,127.5 295,232.5 200,285 105,232.5 105,127.5"/>
+    </clipPath>
+  </defs>
+
+  <!-- Background circle -->
+  <rect width="400" height="400" fill="url(#bgGrad)" rx="200"/>
+
+  <!-- Ambient glow orb -->
+  <circle cx="200" cy="185" r="120" fill="url(#cyanGlow)" filter="url(#glowSoft)"/>
+
+  <!-- Outer ring dots (circuit-like) -->
+  <g opacity="0.4">
+    <circle cx="200" cy="38" r="3" fill="#00d4ff"/>
+    <circle cx="280" cy="62" r="2" fill="#0066ff"/>
+    <circle cx="338" cy="140" r="2.5" fill="#00d4ff"/>
+    <circle cx="352" cy="220" r="2" fill="#0066ff"/>
+    <circle cx="320" cy="318" r="2.5" fill="#00d4ff"/>
+    <circle cx="200" cy="358" r="3" fill="#00d4ff"/>
+    <circle cx="80" cy="318" r="2.5" fill="#0066ff"/>
+    <circle cx="48" cy="220" r="2" fill="#00d4ff"/>
+    <circle cx="62" cy="140" r="2.5" fill="#0066ff"/>
+    <circle cx="120" cy="62" r="2" fill="#00d4ff"/>
+  </g>
+
+  <!-- Outer orbit ring -->
+  <circle cx="200" cy="190" r="155" fill="none" stroke="#00d4ff" stroke-width="0.5" stroke-opacity="0.15" stroke-dasharray="4 8"/>
+
+  <!-- Rotating tick marks on ring -->
+  <g opacity="0.3">
+    <line x1="200" y1="35" x2="200" y2="45" stroke="#00d4ff" stroke-width="1.5"/>
+    <line x1="200" y1="335" x2="200" y2="345" stroke="#00d4ff" stroke-width="1.5"/>
+    <line x1="45" y1="190" x2="55" y2="190" stroke="#00d4ff" stroke-width="1.5"/>
+    <line x1="345" y1="190" x2="355" y2="190" stroke="#00d4ff" stroke-width="1.5"/>
+    <line x1="86" y1="81" x2="93" y2="88" stroke="#00d4ff" stroke-width="1"/>
+    <line x1="307" y1="81" x2="314" y2="88" stroke="#00d4ff" stroke-width="1"/>
+    <line x1="86" y1="299" x2="93" y2="292" stroke="#00d4ff" stroke-width="1"/>
+    <line x1="307" y1="299" x2="314" y2="292" stroke="#00d4ff" stroke-width="1"/>
+  </g>
+
+  <!-- Hexagon outer border glow -->
+  <polygon
+    points="200,68 302,124 302,236 200,292 98,236 98,124"
+    fill="none"
+    stroke="#00d4ff"
+    stroke-width="1"
+    stroke-opacity="0.2"
+    filter="url(#glowSoft)"
+  />
+
+  <!-- Main hexagon background -->
+  <polygon
+    points="200,75 295,127.5 295,232.5 200,285 105,232.5 105,127.5"
+    fill="url(#innerHexGrad)"
+    stroke="url(#hexGrad)"
+    stroke-width="2.5"
+    filter="url(#glowCyan)"
+  />
+
+  <!-- Hex inner ring -->
+  <polygon
+    points="200,90 282,136 282,228 200,274 118,228 118,136"
+    fill="none"
+    stroke="#00d4ff"
+    stroke-width="0.75"
+    stroke-opacity="0.2"
+  />
+
+  <!-- Corner accent marks on hex -->
+  <g stroke="#00d4ff" stroke-width="2" stroke-opacity="0.7" fill="none">
+    <!-- Top -->
+    <polyline points="188,75 200,75 212,75"/>
+    <!-- Bottom -->
+    <polyline points="188,285 200,285 212,285"/>
+    <!-- Top-right -->
+    <polyline points="289,113 295,127.5 295,138"/>
+    <!-- Bottom-right -->
+    <polyline points="295,222 295,232.5 289,247"/>
+    <!-- Top-left -->
+    <polyline points="111,113 105,127.5 105,138"/>
+    <!-- Bottom-left -->
+    <polyline points="105,222 105,232.5 111,247"/>
+  </g>
+
+  <!-- Subtle hex grid inside -->
+  <g opacity="0.06" clip-path="url(#hexClip)">
+    <line x1="140" y1="75" x2="140" y2="285" stroke="#00d4ff" stroke-width="1"/>
+    <line x1="170" y1="75" x2="170" y2="285" stroke="#00d4ff" stroke-width="1"/>
+    <line x1="200" y1="75" x2="200" y2="285" stroke="#00d4ff" stroke-width="1"/>
+    <line x1="230" y1="75" x2="230" y2="285" stroke="#00d4ff" stroke-width="1"/>
+    <line x1="260" y1="75" x2="260" y2="285" stroke="#00d4ff" stroke-width="1"/>
+    <line x1="105" y1="150" x2="295" y2="150" stroke="#00d4ff" stroke-width="1"/>
+    <line x1="105" y1="180" x2="295" y2="180" stroke="#00d4ff" stroke-width="1"/>
+    <line x1="105" y1="210" x2="295" y2="210" stroke="#00d4ff" stroke-width="1"/>
+  </g>
+
+  <!-- Ballot/vote icon — stylized checkmark on a card -->
+  <!-- Vote card -->
+  <rect x="158" y="140" width="84" height="72" rx="6"
+    fill="none" stroke="#00d4ff" stroke-width="1.5" stroke-opacity="0.4"/>
+
+  <!-- Vote lines on card -->
+  <g opacity="0.35" stroke="#00d4ff" stroke-width="1.5" stroke-linecap="round">
+    <line x1="172" y1="158" x2="186" y2="158"/>
+    <line x1="172" y1="170" x2="186" y2="170"/>
+    <line x1="172" y1="182" x2="186" y2="182"/>
+    <line x1="191" y1="158" x2="228" y2="158"/>
+    <line x1="191" y1="170" x2="228" y2="170"/>
+    <line x1="191" y1="182" x2="218" y2="182"/>
+  </g>
+
+  <!-- Big checkmark (the hero element) -->
+  <g filter="url(#glowStrong)">
+    <polyline
+      points="152,183 172,205 218,152"
+      fill="none"
+      stroke="url(#checkGrad)"
+      stroke-width="8"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </g>
+
+  <!-- Checkmark subtle duplicate for depth -->
+  <polyline
+    points="152,183 172,205 218,152"
+    fill="none"
+    stroke="#ffffff"
+    stroke-width="2.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    opacity="0.25"
+  />
+
+  <!-- Small data node dots -->
+  <g filter="url(#glowCyan)">
+    <circle cx="148" cy="155" r="3" fill="#00d4ff" opacity="0.6"/>
+    <circle cx="252" cy="155" r="3" fill="#0066ff" opacity="0.6"/>
+    <circle cx="148" cy="225" r="3" fill="#0066ff" opacity="0.6"/>
+    <circle cx="252" cy="225" r="3" fill="#00d4ff" opacity="0.6"/>
+    <circle cx="200" cy="75" r="4" fill="#00d4ff" opacity="0.8"/>
+    <circle cx="200" cy="285" r="4" fill="#00d4ff" opacity="0.8"/>
+  </g>
+
+  <!-- Connector lines from dots -->
+  <g stroke="#00d4ff" stroke-width="0.75" stroke-opacity="0.25">
+    <line x1="148" y1="155" x2="158" y2="155"/>
+    <line x1="252" y1="155" x2="242" y2="155"/>
+    <line x1="148" y1="225" x2="158" y2="212"/>
+    <line x1="252" y1="225" x2="242" y2="212"/>
+  </g>
+
+  <!-- NEXUSVOTE text -->
+  <text
+    x="200" y="326"
+    text-anchor="middle"
+    font-family="'Orbitron', 'Arial Black', monospace"
+    font-size="26"
+    font-weight="900"
+    letter-spacing="6"
+    fill="url(#textGrad)"
+    filter="url(#glowCyan)"
+  >NEXUSVOTE</text>
+
+  <!-- Tagline -->
+  <text
+    x="200" y="348"
+    text-anchor="middle"
+    font-family="'Share Tech Mono', 'Courier New', monospace"
+    font-size="8.5"
+    font-weight="400"
+    letter-spacing="3.5"
+    fill="#3d5a6e"
+  >DECENTRALIZED DEMOCRACY</text>
+
+  <!-- Tagline side lines -->
+  <line x1="60" y1="344" x2="128" y2="344" stroke="#00d4ff" stroke-width="0.5" stroke-opacity="0.3"/>
+  <line x1="272" y1="344" x2="340" y2="344" stroke="#00d4ff" stroke-width="0.5" stroke-opacity="0.3"/>
+
+  <!-- Version/ID tag -->
+  <text
+    x="200" y="370"
+    text-anchor="middle"
+    font-family="'Share Tech Mono', monospace"
+    font-size="7"
+    letter-spacing="2"
+    fill="#1a3444"
+  >v2.0 // SECURE · TRANSPARENT · INSTANT</text>
+
+</svg>
