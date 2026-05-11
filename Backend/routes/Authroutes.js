@@ -3,6 +3,7 @@ const router = express.Router();
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const { protect } = require('../middleware/auth');
+const auth = require("../middleware/auth");
 
 const JWT_SECRET = process.env.JWT_SECRET || 'votingsystem_super_secret_key_2024';
 const generateToken = (id) => jwt.sign({ id }, JWT_SECRET, { expiresIn: '7d' });
